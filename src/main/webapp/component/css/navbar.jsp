@@ -2,6 +2,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix='c'  %>
 <%@page isELIgnored="false" %>
 
+<%@page import='com.entity.Jobs' %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,9 +32,13 @@
 	  </c:if>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-    <c:if test = "${not empty userobj}">
+    <c:if test = "${userobj.role eq 'admin' }">
       <a href="admin.jsp" class="btn btn-light mr-1" >Admin</a>
-      <a href="#" class="btn btn-light">Logout</a>
+      <a href="logout" class="btn btn-light">Logout</a>
+    </c:if>
+    <c:if test = "${userobj.role eq 'user' }">
+      <a href="edit_profile.jsp" class="btn btn-light mr-1" >${userobj.name}</a>
+      <a href="logout" class="btn btn-light">Logout</a>
     </c:if>
     <c:if test = "${empty userobj}">
       <a href="login.jsp" class="btn btn-light mr-1" >Login</a>

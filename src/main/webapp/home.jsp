@@ -135,7 +135,7 @@
 
                                     <div class="text-center">
 
-                                        <a href="one_view.jsp?id = <%=j.getId()%>"
+                                        <a href="one_view.jsp?id=<%=j.getId()%>"
                                             class="btn btn-sm bg-success text-white">
                                             View More </a>
 

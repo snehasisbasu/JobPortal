@@ -33,30 +33,16 @@ public class LoginServlet extends HttpServlet{
     
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		response.setContentType("text/html");
-//		Connection con;
-//		PreparedStatement psmt;
 		
 		try {
-//			String driver="com.mysql.jdbc.Driver";
-//			Class.forName(driver);
-//			String url="jdbc:mysql://localhost:3306/todo";
-//			String username="root";
-//			String password="thispc";
-//			con = DriverManager.getConnection(url, username, password);
 			String email=request.getParameter("email");
 			String password=request.getParameter("password");
-////			
-//			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/login.jsp");
-//			requestDispatcher.include(request, response);
-////			
-//			System.out.print(email);
-			User u = new User();
+			User admin = new User();
 			HttpSession session = request.getSession();
 			
 			if("admin@gmail.com".equals(email) && "admin@121".equals(password)) {
-				session.setAttribute("userobj", u);
-				u.setRole("admin");
+				session.setAttribute("userobj", admin);
+				admin.setRole("admin");
 				response.sendRedirect("admin.jsp");
 			}
 			else {
@@ -65,10 +51,11 @@ public class LoginServlet extends HttpServlet{
 				User user = dao.login(email, password);
 				
 				if(user!= null) {
-//					session.setAttribute("userobj", user);
+					session.setAttribute("userobj", user);
+					user.setRole("user");
 					response.sendRedirect("home.jsp");
 				}else {
-//					session.setAttribute("succMsg", "Invalid Email & Password");
+					session.setAttribute("succMsg", "Invalid Email & Password");
 					response.sendRedirect("login.jsp");
 				}
 			}

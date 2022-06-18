@@ -25,12 +25,13 @@
 				<div class="card-body">
 					<div class="text-center text-success">
 						<i class="fa fa-user-friends fa-3x"></i>
-						<!--<c:if test = "${not empty succMsg}">
+						<c:if test = "${not empty succMsg}">
 							<div class = "alert alert-sucess" role="alert">${succMsg}</div>
 							<c:remove var="succMsg"/>
-						</c:if> -->
+						</c:if>
 						
-						<%int id = Integer.parseInt(request.getParameter("id"));
+						<%
+						int id = Integer.parseInt(request.getParameter("id"));
 						JobDAO dao = new JobDAO(DBConnect.getConn());
 						Jobs j = dao.getJobById(id);
 						%>

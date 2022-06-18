@@ -17,6 +17,10 @@
 <i class="fa fa-user-plus fa-2x" aria-hidden="true"></i>
 <h5>Login Page</h5>
 </div>
+<c:if test = "${not empty succMsg}">
+	<h4 class = "alert alert-danger" role="alert">${succMsg}</h4>
+	<c:remove var="succMsg"/>
+</c:if>
 </div>
 </div>
 </div>
