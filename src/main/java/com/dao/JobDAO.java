@@ -132,5 +132,32 @@ public class JobDAO {
 		return j;
 	}
 	
+	public List<Jobs> getAllJobsForUser(){
+		List<Jobs> list=new ArrayList<Jobs>();
+		Jobs j=null;
+		
+		try {
+		     String sql="select * from jobs where status = ? order by id desc";
+		     PreparedStatement ps=conn.prepareStatement(sql);
+		     ps.setString(1, "Active");
+		     ResultSet rs=ps.executeQuery();
+		     while(rs.next()){
+		    	 j=new Jobs();
+		    	 j.setId(rs.getInt(1));
+		    	 j.setTitle(rs.getString(2));
+		    	 j.setDescriptor(rs.getString(3));
+		    	 j.setCategory(rs.getString(4));
+		    	 j.setStatus(rs.getString(5));
+		    	 j.setLocation(rs.getString(6));
+		    	 j.setPdate(rs.getTimestamp(7)+"");
+		    	 list.add(j);
+		    	 
+		     }
+		}catch(Exception e) {
+			e.getStackTrace();
+		}
+		return list;
+	}
+	
 	
 	}

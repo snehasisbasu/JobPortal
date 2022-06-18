@@ -45,7 +45,7 @@ public class LoginServlet extends HttpServlet{
 //			String password="thispc";
 //			con = DriverManager.getConnection(url, username, password);
 			String email=request.getParameter("email");
-			String pswd=request.getParameter("password");
+			String password=request.getParameter("password");
 ////			
 //			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/login.jsp");
 //			requestDispatcher.include(request, response);
@@ -54,7 +54,7 @@ public class LoginServlet extends HttpServlet{
 			User u = new User();
 			HttpSession session = request.getSession();
 			
-			if("admin@gmail.com".equals(email) && "admin@121".equals(pswd)) {
+			if("admin@gmail.com".equals(email) && "admin@121".equals(password)) {
 				session.setAttribute("userobj", u);
 				u.setRole("admin");
 				response.sendRedirect("admin.jsp");
@@ -62,13 +62,13 @@ public class LoginServlet extends HttpServlet{
 			else {
 				
 				UserDAO dao = new UserDAO(DBConnect.getConn());
-				User user = dao.login(email, pswd);
+				User user = dao.login(email, password);
 				
 				if(user!= null) {
-					session.setAttribute("userobj", user);
+//					session.setAttribute("userobj", user);
 					response.sendRedirect("home.jsp");
 				}else {
-					session.setAttribute("succMsg", "Invalid Email & Password");
+//					session.setAttribute("succMsg", "Invalid Email & Password");
 					response.sendRedirect("login.jsp");
 				}
 			}

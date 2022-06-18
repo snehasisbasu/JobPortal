@@ -44,12 +44,12 @@ public class UserDAO {
 		User u = null;
 		
 		try {
-			String sql = "select * from user where email=? and password=?";
+			String sql = "select * from user where email = ? and password = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, email);
 			ps.setString(2, password);
-			
-			ResultSet rs = ps.executeQuery(sql);
+
+			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
 				u = new User();
 				u.setId(rs.getInt(1));
