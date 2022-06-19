@@ -35,8 +35,8 @@
 					{%>
 					
 						<div class="card mt-2">
-					<div class="card-body">
-					<div class="text-center text-primary">
+						<div class="card-body">
+						<div class="text-center text-primary">
 						<i class="far fa-clipboard fa-2x"></i>
 							
 						<c:if test = "${not empty succMsg}">

@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%> 
+    pageEncoding="UTF-8"%>
+    
 <%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page isELIgnored="false" %>    
-
-  
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,15 +12,15 @@
 <%@include file ="component/css/css.jsp" %>
 
 </head>
-<body style="background-color: #f7f7f7style;">
-	
+<body style="background-color: #f7f7f7;">
+
 	<c:if test="${empty userobj }">
 	<c:redirect url="login.jsp" />
 	</c:if>
 	
 	<%@include file="component/css/navbar.jsp" %>
 	
-	<div class="continer-fluid">
+	<div class="container-fluid">
 		<div class="row p-4">
 			<div class="col-md-4 offset-md-4">
 			<div class="card">
@@ -33,26 +33,26 @@
 					
 					<form action="update_profile" method="post">
 					
-					<input type="hidden" name="id" value="${userobj.id}">
+					<input type="hidden" name="id" value="${userobj.id }">
 					
 					<div class="form-group">
 						<label>Enter Full Name</label>
-						<input type="text" required="required" class="from-control" id="exampleInputEmail" aria-describedby="emailHelp" name="name" value="${userobj.name}" >
+						<input type="text" required="required" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" name="name" value="${userobj.name }" >
 					</div>
 					
 					<div class="form-group">
-						<label>Enter Qualification</label>
-						<input type="text" required="required" class="from-control" id="exampleInputEmail" aria-describedby="emailHelp" name="qua" value="${userobj.password}" >
+					<label>Enter Qualification</label>
+					<input type="text" required="required" class="form-control" id="exampleInputEmail" name="qua" value="${userobj.qualification }" >
 					</div>
 					
 					<div class="form-group">
-						<label>Enter Email</label>
-						<input type="email" required="required" class="from-control" id="exampleInputEmail" aria-describedby="emailHelp" name="email" value="${userobj.qualification}" >
+					<label>Enter Email</label>
+					<input type="email" required="required" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" name="email" value="${userobj.email }" >
 					</div>
 					
 					<div class="form-group">
-						<label>Enter Password</label>
-						<input type="password" required="required" class="from-control" id="exampleInputEmail" aria-describedby="emailHelp" name="password" value="${userobj.email}" >
+					<label>Enter Password</label>
+					<input type="password" required="required" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" name="password" value="${userobj.password }" >
 					</div>
 					
 					<button type="submit" class="btn btn-primary badge-pill btn-block">Update</button>
@@ -63,7 +63,7 @@
 		</div>
 	</div>
 	<div style="margin-top:50px">
-	<%@include file="component/css/footer.jsp" %>
+		<%@include file="component/css/footer.jsp" %>
 	</div>
 
 </body>

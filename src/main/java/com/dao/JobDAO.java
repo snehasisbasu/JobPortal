@@ -160,15 +160,15 @@ public class JobDAO {
 	}
 	
 	
-	public List<Jobs> getJobsAndLocationAndCate(){
+	public List<Jobs> getJobsAndLocationAndCate(String category, String location){
 		List<Jobs> list=new ArrayList<Jobs>();
 		Jobs j=null;
 		
 		try {
 		     String sql="select * from jobs where category = ? and location = ? order by id DESC";
 		     PreparedStatement ps=conn.prepareStatement(sql);
-		     ps.setString(1, "category");
-		     ps.setString(1, "location");
+		     ps.setString(1, category);
+		     ps.setString(1, location);
 		     ResultSet rs=ps.executeQuery();
 		     while(rs.next()){
 		    	 j=new Jobs();
@@ -189,15 +189,15 @@ public class JobDAO {
 	}
 	
 	
-	public List<Jobs> getJobsORLocationAndCate(){
+	public List<Jobs> getJobsORLocationAndCate(String category, String location){
 		List<Jobs> list=new ArrayList<Jobs>();
 		Jobs j=null;
 		
 		try {
 		     String sql="select * from jobs where category = ? or location = ? order by id DESC";
 		     PreparedStatement ps=conn.prepareStatement(sql);
-		     ps.setString(1, "category");
-		     ps.setString(1, "location");
+		     ps.setString(1, category);
+		     ps.setString(2, location);
 		     
 		     ResultSet rs=ps.executeQuery();
 		     while(rs.next()){
